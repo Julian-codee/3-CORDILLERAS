@@ -1,0 +1,67 @@
+:root{--navy:#071a25;--cream:#f5f0e6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;min-height:100%;background:var(--navy);font-family:Arial,Helvetica,sans-serif}
+.site-header{height:64px;position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,56px);background:rgba(7,26,37,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.12)}
+.brand{color:var(--cream);font-size:13px;letter-spacing:.2em;font-weight:700;text-decoration:none}
+.menu-toggle{width:44px;height:44px;border:0;background:transparent;display:grid;align-content:center;justify-items:center;gap:6px;cursor:pointer;border-radius:8px}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--cream);transition:transform .22s,opacity .22s}
+.menu-toggle:hover{background:rgba(255,255,255,.08)}
+.menu-toggle.is-open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.menu-toggle.is-open span:nth-child(2){opacity:0}
+.menu-toggle.is-open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+.site-menu{position:fixed;z-index:19;top:64px;right:clamp(12px,4vw,56px);width:min(320px,calc(100vw - 24px));padding:12px;background:#0b2634;border:1px solid rgba(255,255,255,.14);border-radius:0 0 14px 14px;box-shadow:0 18px 50px rgba(0,0,0,.35);display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s}
+.site-menu.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.site-menu a{color:#f5f0e6;text-decoration:none;padding:15px 16px;font-size:15px;border-radius:8px}
+.site-menu a:hover,.site-menu a:focus-visible{background:rgba(255,255,255,.09);outline:none}
+.landing-page{width:100%;max-width:1600px;margin:0 auto;overflow:hidden}
+.modulo{display:block;width:100%;margin:0;padding:0;line-height:0;scroll-margin-top:64px}
+.modulo__imagen{display:block;width:100%;height:auto;margin:0;padding:0}
+@media(min-width:1601px){.landing-page{max-width:1600px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Ajustes específicos para teléfonos */
+@media (max-width: 600px) {
+  html { scroll-padding-top: 58px; }
+  .site-header {
+    height: 56px;
+    padding-inline: 16px;
+  }
+  .brand {
+    font-size: 11px;
+    letter-spacing: .16em;
+  }
+  .menu-toggle { width: 42px; height: 42px; }
+  .site-menu {
+    top: 56px;
+    right: 8px;
+    left: 8px;
+    width: auto;
+    padding: 8px;
+    border-radius: 0 0 12px 12px;
+  }
+  .Logo-sidebar {
+    position: static;
+    width: 80px;
+    height: auto;
+    display: block;
+  }
+
+  .site-menu a {
+    padding: 14px 12px;
+    font-size: 16px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+  .modulo { scroll-margin-top: 56px; }
+  .landing-page { width: 100%; max-width: 100%; }
+  .modulo__imagen {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 360px) {
+  .brand { font-size: 10px; letter-spacing: .12em; }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="3 Cordilleras: lo que hay detrás de nuestra autenticidad.">
+  <title>3 Cordilleras | Lo que hay detrás</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="3 Cordilleras, inicio"><img class="Logo-sidebar" src="assets/Espiral blanca con punto final.png" alt="image"></a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <nav class="site-menu" id="site-menu" aria-hidden="true">
+    <a href="#inicio">Inicio</a>
+    <a href="#experiencia">La experiencia</a>
+    <a href="#origen">Nuestro origen</a>
+    <a href="#proceso">Así se hace</a>
+    <a href="#compromiso">Nuestro compromiso</a>
+  </nav>
+  <main class="landing-page" id="inicio">
+    <!-- Secciones 1 y 2: unidas en un solo módulo para conservar la curva de transición. -->
+    <section class="modulo modulo--secciones-1-2" aria-label="Secciones 1 y 2: Lo que hay detrás y escanea el código QR">
+      <img class="modulo__imagen" src="assets/secciones-1-2.png"
+        alt="3 Cordilleras. Lo que hay detrás. Nuestra autenticidad se demuestra con hechos. Presentación del producto y llamado a escanear el código QR."
+        width="600" height="848" fetchpriority="high">
+    </section>
+
+    <!-- Secciones 3 y 4: se conserva la curva de transición y se evita repetir la franja superior. -->
+    <section id="experiencia" class="modulo modulo--secciones-3-4" aria-label="Secciones 3 y 4: Qué podrás vivir y por qué hacemos esto">
+      <img class="modulo__imagen" src="assets/secciones-3-4.png"
+        alt="Qué podrás vivir: recorrido por la fábrica, prueba de cervezas, descubrimiento de ingredientes y experiencia cervecera. Por qué hacemos esto: transparencia y compromiso de 3 Cordilleras."
+        width="600" height="966" loading="lazy">
+    </section>
+
+    <!-- Secciones 5 y 6: incluye el origen, los atributos de marca y los ingredientes. -->
+    <section id="origen" class="modulo modulo--secciones-5-6" aria-label="Secciones 5 y 6: Nuestro origen, lo que nos define y lo que hay dentro">
+      <img class="modulo__imagen" src="assets/secciones-5-6.png"
+        alt="Nuestro origen en Medellín; autenticidad, creatividad y cultura cervecera colombiana; ingredientes de nuestras cervezas: agua, malta, lúpulo y levadura."
+        width="600" height="858" loading="lazy">
+    </section>
+
+    <!-- Secciones 7 y 8: elaboración artesanal y el agua como recurso esencial. -->
+    <section id="proceso" class="modulo modulo--secciones-7-8" aria-label="Secciones 7 y 8: Así se hace y el agua es nuestra base">
+      <img class="modulo__imagen" src="assets/secciones-7-8.png"
+        alt="Así se hace: un proceso artesanal que combina técnica, tiempo y pasión. El agua es nuestra base: información sobre su importancia en la elaboración cervecera y su gestión responsable."
+        width="600" height="902" loading="lazy">
+    </section>
+
+    <!-- Sección 9: cierre de la página con el compromiso ambiental de la marca. -->
+    <section id="compromiso" class="modulo modulo--seccion-9" aria-label="Sección 9: Nuestro compromiso">
+      <img class="modulo__imagen" src="assets/seccion-9.png"
+        alt="Nuestro compromiso: trabajamos en iniciativas que reducen nuestro impacto ambiental y fortalecen las comunidades que nos rodean. Conoce más."
+        width="600" height="361" loading="lazy">
+    </section>
+  </main>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.site-menu');
+    function closeMenu() {
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menú');
+      menu.classList.remove('is-visible');
+      menu.setAttribute('aria-hidden', 'true');
+    }
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      menu.classList.toggle('is-visible', open);
+      menu.setAttribute('aria-hidden', String(!open));
+    });
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  </script>
+</body>
+</html>
